@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dictionary-crawler"
+version = "0.0.1"
+description = "A Python package for crawling dictionaries, for now just Cambridge"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+authors = [
+  { name="Arshin", email="fatemmaqu@gmail.com" },
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "httpx",
+    "pydantic>=2.0",
+    "beautifulsoup4",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24",
+    "respx>=0.22",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dictionary_crawler"]
+
+[tool.hatch.build]
+exclude = ["venv/", "tests/"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[project.urls]
+Homepage = "https://github.com/Arshin/dictionary-crawler"
+Issues = "https://github.com/Arshin/dictionary-crawler/issues"
